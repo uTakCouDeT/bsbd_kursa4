@@ -66,7 +66,7 @@ REST_FRAMEWORK = {
 
 # Настройки логина
 LOGIN_URL = '/accounts/login/'  # URL для перенаправления при использовании @login_required
-LOGIN_REDIRECT_URL = '/clients'  # Куда перенаправлять после успешного логина
+LOGIN_REDIRECT_URL = '/'  # Куда перенаправлять после успешного логина
 
 # Настройки для статических файлов
 STATIC_URL = '/static/'

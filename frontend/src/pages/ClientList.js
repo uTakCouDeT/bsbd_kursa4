@@ -25,18 +25,18 @@ const ClientList = () => {
     }, []);
 
     const handleDelete = async (id) => {
-        if (window.confirm('Вы уверены, что хотите удалить клиента?')) {
-            try {
-                await axios.delete(`/api/clients/${id}/`);
-                setClients(clients.filter(client => client.id !== id));
-            } catch (error) {
-                if (error.response && (error.response.status === 403 || error.response.status === 401)) {
-                    window.location.href = '/accounts/login/';
-                } else {
-                    console.error('Ошибка при удалении клиента:', error);
-                }
+        // if (window.confirm('Вы уверены, что хотите удалить клиента?')) {
+        try {
+            await axios.delete(`/api/clients/${id}/`);
+            setClients(clients.filter(client => client.id !== id));
+        } catch (error) {
+            if (error.response && (error.response.status === 403 || error.response.status === 401)) {
+                window.location.href = '/accounts/login/';
+            } else {
+                console.error('Ошибка при удалении клиента:', error);
             }
         }
+        // }
     };
 
     const columns = [
@@ -66,7 +66,7 @@ const ClientList = () => {
             <Typography variant="h4" gutterBottom>
                 Клиенты
             </Typography>
-            <div style={{height: 400, width: '100%'}}>
+            <div style={{marginTop: 16, minHeight: 300, width: '100%'}}>
                 <DataGrid
                     rows={clients}
                     columns={columns}
