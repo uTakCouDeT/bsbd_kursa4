@@ -2,27 +2,33 @@
 
 Установите виртуальное окружение для работы с визуальной частью и сервером:
    ```bash
-   python -m venv venv
+      python -m venv venv
    ```
 
 Если `python` не добавлен в PATH, то в этой команде `python` должен быть заменён на путь к интерпретатору Python, который вы хотите использовать.
 
 Активируйте виртуальное окружение:
    ```bash
-   venv\Scripts\activate
+      venv\Scripts\activate
    ```
 
 Установите необходимые зависимости для работы с визуальной частью и сервером:
    ```bash
-   python -m pip install -r requirements.txt
+      python -m pip install -r requirements.txt
    ```
 
+Соберите из исходников файлы для фронтенда
+   ```bash
+      cd frontend
+      npm run build
+      cd ..
+   ```
 ## Использование
 
 Запустите приложение командой:
 
    ```bash
-   python manage.py runserver
+      python manage.py runserver
    ```
 
 Веб-интерфейс будет доступен по адресу [http://127.0.0.1:8000/](http://127.0.0.1:8000/).

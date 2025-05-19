@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React from 'react';
+import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
+import ClientList from './pages/ClientList';
+import ClientForm from './pages/ClientForm';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <nav>
+                    <ul>
+                        <li><Link to="/clients">Клиенты</Link></li>
+                        <li><Link to="/accounts/logout/">Выход</Link></li>
+                        <li><Link to="/accounts/login/">Вход</Link></li>
+                    </ul>
+                </nav>
+                <Routes>
+                    <Route path="/clients" element={<ClientList/>}/>
+                    <Route path="/clients/add" element={<ClientForm/>}/>
+                    <Route path="/clients/edit/:id" element={<ClientForm/>}/>
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
