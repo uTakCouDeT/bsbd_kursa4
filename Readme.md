@@ -1,11 +1,40 @@
-### Versions
+## Подготовка проекта
 
-* Node.js - v22.15.1
-* Npm - v10.9.0
-* Python 3.14
+Установите виртуальное окружение для работы с визуальной частью и сервером:
+   ```bash
+   python -m venv venv
+   ```
 
-### Commands
+Если `python` не добавлен в PATH, то в этой команде `python` должен быть заменён на путь к интерпретатору Python, который вы хотите использовать.
 
-```bash
-    pip install -r requirements.txt
-```
+Активируйте виртуальное окружение:
+   ```bash
+   venv\Scripts\activate
+   ```
+
+Установите необходимые зависимости для работы с визуальной частью и сервером:
+   ```bash
+   python -m pip install -r requirements.txt
+   ```
+
+## Использование
+
+Запустите приложение командой:
+
+   ```bash
+   python manage.py runserver
+   ```
+
+Веб-интерфейс будет доступен по адресу [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
+
+## Версии
+
+- **Python** - v3.14
+- **Node.js** - v22.15.1
+- **npm** - v10.9.0
+
+## Ссылки на загрузку
+
+- [Python](https://www.python.org/downloads/) - для установки python.
+- [SAS Planet](https://www.sasgis.org/sasplaneta/) - для скачивания и работы с тайлами карт.
+- [Node.js](https://nodejs.org/) - для установки и работы с npm.
