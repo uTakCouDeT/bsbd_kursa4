@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import axios from '../axios';
-import {Link, useNavigate} from 'react-router-dom';
+import {DataGrid} from '@mui/x-data-grid';
+import {IconButton, Box, Typography, Button} from '@mui/material';
+import {Edit, Delete, Add} from '@mui/icons-material';
 
 const ClientList = () => {
     const [clients, setClients] = useState([]);
-    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchClients = async () => {
@@ -13,7 +15,6 @@ const ClientList = () => {
                 setClients(response.data);
             } catch (error) {
                 if (error.response && (error.response.status === 403 || error.response.status === 401)) {
-                    // Перенаправляем на страницу логина Django
                     window.location.href = '/accounts/login/';
                 } else {
                     console.error('Ошибка при загрузке клиентов:', error);
@@ -21,7 +22,7 @@ const ClientList = () => {
             }
         };
         fetchClients();
-    }, [navigate]);
+    }, []);
 
     const handleDelete = async (id) => {
         if (window.confirm('Вы уверены, что хотите удалить клиента?')) {
@@ -38,35 +39,58 @@ const ClientList = () => {
         }
     };
 
+    const columns = [
+        {field: 'id', headerName: 'ID', flex: 0.5},
+        {field: 'name', headerName: 'Имя', flex: 1},
+        {field: 'contact_info', headerName: 'Контактная информация', flex: 1.5},
+        {field: 'interaction_history', headerName: 'История взаимодействий', flex: 2},
+        {
+            field: 'actions',
+            headerName: 'Действия',
+            flex: 1,
+            renderCell: (params) => (
+                <>
+                    <IconButton component={Link} to={`/clients/edit/${params.row.id}`} color="primary">
+                        <Edit/>
+                    </IconButton>
+                    <IconButton onClick={() => handleDelete(params.row.id)} color="error">
+                        <Delete/>
+                    </IconButton>
+                </>
+            ),
+        },
+    ];
+
     return (
-        <div>
-            <h2>Список клиентов</h2>
-            <Link to="/clients/add">Добавить клиента</Link>
-            <table>
-                <thead>
-                <tr>
-                    <th>Имя</th>
-                    <th>Контактная информация</th>
-                    <th>История взаимодействий</th>
-                    <th>Действия</th>
-                </tr>
-                </thead>
-                <tbody>
-                {clients.map(client => (
-                    <tr key={client.id}>
-                        <td>{client.name}</td>
-                        <td>{client.contact_info}</td>
-                        <td>{client.interaction_history}</td>
-                        <td>
-                            <Link to={`/clients/edit/${client.id}`}>Редактировать</Link>
-                            {' | '}
-                            <button onClick={() => handleDelete(client.id)}>Удалить</button>
-                        </td>
-                    </tr>
-                ))}
-                </tbody>
-            </table>
-        </div>
+        <Box sx={{p: 3}}>
+            <Typography variant="h4" gutterBottom>
+                Клиенты
+            </Typography>
+            <div style={{height: 400, width: '100%'}}>
+                <DataGrid
+                    rows={clients}
+                    columns={columns}
+                    initialState={{
+                        pagination: {
+                            paginationModel: {pageSize: 5},
+                        },
+                    }}
+                    pageSizeOptions={[5, 10, 20]}
+                    disableRowSelectionOnClick
+                />
+            </div>
+            <Box sx={{mt: 2, display: 'flex', justifyContent: 'flex-start'}}>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    startIcon={<Add/>}
+                    component={Link}
+                    to="/clients/add"
+                >
+                    Добавить клиента
+                </Button>
+            </Box>
+        </Box>
     );
 };
 

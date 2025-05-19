@@ -1,7 +1,9 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth import logout
 from .models import Client, Employee, Service, Project, Campaign, Request, Report
 from .serializers import (
     ClientSerializer, EmployeeSerializer, ServiceSerializer,
@@ -14,6 +16,11 @@ from .serializers import (
 def index(request):
     return render(request, 'index.html')
 
+# Кастомное представление для выхода
+def custom_logout(request):
+    messages.success(request, "Вы успешно вышли из системы.")
+    logout(request)
+    return redirect('login')
 
 # ViewSet для Клиентов
 class ClientViewSet(viewsets.ModelViewSet):

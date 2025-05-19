@@ -1,65 +1,109 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вход</title>
+    <!-- Используем локальный Materialize CSS -->
+    <link href="{% static 'css/materialize.min.css' %}" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            background-color: #f5f5f5;
         }
 
         .login-container {
             background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
         }
 
         .login-container h2 {
             text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-size: 1.75rem;
+            font-weight: 500;
         }
 
-        .login-container form {
-            display: flex;
-            flex-direction: column;
+        .login-container .input-field {
+            margin-bottom: 1rem;
         }
 
-        .login-container label {
-            margin: 10px 0 5px;
+        .login-container .input-field input {
+            border-bottom: 1px solid #ccc !important;
+            box-shadow: none !important;
+            color: #333;
         }
 
-        .login-container input {
-            padding: 8px;
-            margin-bottom: 10px;
+        .login-container .input-field input:focus {
+            border-bottom: 2px solid #1976d2 !important;
         }
 
-        .login-container button {
-            padding: 10px;
-            background-color: #007bff;
+        .login-container .input-field label {
+            color: #666 !important;
+        }
+
+        .login-container .input-field input:focus + label {
+            color: #1976d2 !important;
+        }
+
+        .login-container .message {
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
             color: white;
-            border: none;
-            cursor: pointer;
+            text-align: center;
+            font-size: 0.9rem;
         }
 
-        .login-container button:hover {
-            background-color: #0056b3;
+        .login-container .message.success {
+            background-color: #4caf50;
+        }
+
+        .login-container .message.error {
+            background-color: #f44336;
         }
     </style>
 </head>
 <body>
 <div class="login-container">
     <h2>Вход</h2>
+    {% if messages %}
+        <div>
+            {% for message in messages %}
+                <div class="message {% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Войти</button>
+        <div class="input-field">
+            {{ form.username }}
+            <label for="id_username">Имя пользователя</label>
+        </div>
+        <div class="input-field">
+            {{ form.password }}
+            <label for="id_password">Пароль</label>
+        </div>
+        <button
+                type="submit"
+                class="btn waves-effect waves-light"
+                style="width: 100%; background-color: #1976d2;"
+        >
+            Войти
+        </button>
     </form>
 </div>
 </body>
