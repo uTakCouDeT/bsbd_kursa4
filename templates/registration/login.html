@@ -29,20 +29,24 @@
 
         .login-container h2 {
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 4rem;
             color: #333;
-            font-size: 1.75rem;
+            font-size: 3rem;
             font-weight: 500;
         }
 
         .login-container .input-field {
-            margin-bottom: 1rem;
+            margin-bottom: 3rem;
+            position: relative;
         }
 
         .login-container .input-field input {
             border-bottom: 1px solid #ccc !important;
             box-shadow: none !important;
             color: #333;
+            margin: 0;
+            padding: 0 0.5rem;
+            font-size: 1rem;
         }
 
         .login-container .input-field input:focus {
@@ -51,15 +55,23 @@
 
         .login-container .input-field label {
             color: #666 !important;
+            position: absolute;
+            top: 0.5rem;
+            left: 0;
+            font-size: 1rem;
+            transition: all 0.2s ease;
         }
 
-        .login-container .input-field input:focus + label {
+        .login-container .input-field input:focus + label,
+        .login-container .input-field input:not(:placeholder-shown) + label {
+            top: -1.2rem;
+            font-size: 0.75rem;
             color: #1976d2 !important;
         }
 
         .login-container .message {
             padding: 0.75rem;
-            margin-bottom: 1rem;
+            margin-bottom: 3rem;
             border-radius: 4px;
             color: white;
             text-align: center;
