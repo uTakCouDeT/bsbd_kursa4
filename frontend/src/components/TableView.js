@@ -25,10 +25,10 @@ const TableView = ({endpoint, columns, title, editPath, addPath, onDelete, data}
 
     return (
         <Box sx={{p: 3}}>
-            <Typography variant="h4" gutterBottom>
-                {title}
-            </Typography>
-            <Box sx={{mb: 2}}>
+            <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2}}>
+                <Typography variant="h4">
+                    {title}
+                </Typography>
                 <Button
                     variant="contained"
                     color="primary"

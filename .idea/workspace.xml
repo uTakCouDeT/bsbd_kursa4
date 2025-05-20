@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27fbeef2-c774-4da9-a552-aca73b7204e1" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/FormView.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/TableView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ClientForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ClientForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/FormView.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/FormView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/TableView.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TableView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/ClientList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ClientList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +31,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "uTakCouDeT"
+  }
+}]]></component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/uTakCouDeT/bsbd_kursa4.git",
@@ -145,7 +149,7 @@
       <option name="presentableId" value="Default" />
       <updated>1747625302405</updated>
       <workItem from="1747625303418" duration="36271000" />
-      <workItem from="1747750226434" duration="3082000" />
+      <workItem from="1747750226434" duration="4452000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -235,7 +239,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747753103465</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="commit">
+      <option name="closed" value="true" />
+      <created>1747753332016</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1747753332016</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

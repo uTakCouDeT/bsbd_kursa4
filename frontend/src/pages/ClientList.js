@@ -18,14 +18,14 @@ const ClientList = () => {
     }, []);
 
     const handleDelete = async (id) => {
-        if (window.confirm('Вы уверены, что хотите удалить клиента?')) {
-            try {
-                await axios.delete(`/api/clients/${id}/`);
-                setClients(clients.filter(client => client.id !== id));
-            } catch (error) {
-                console.error('Ошибка при удалении клиента:', error);
-            }
+        // if (window.confirm('Вы уверены, что хотите удалить клиента?')) {
+        try {
+            await axios.delete(`/api/clients/${id}/`);
+            setClients(clients.filter(client => client.id !== id));
+        } catch (error) {
+            console.error('Ошибка при удалении клиента:', error);
         }
+        // }
     };
 
     const columns = [
