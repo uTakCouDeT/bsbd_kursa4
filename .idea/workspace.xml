@@ -5,20 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27fbeef2-c774-4da9-a552-aca73b7204e1" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/CampaignForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/CampaignList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/EmployeeForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/EmployeeList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/ProjectForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/ProjectList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/ReportForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/ReportList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/RequestForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/RequestList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/ServiceForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/ServiceList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,7 +147,7 @@
       <option name="presentableId" value="Default" />
       <updated>1747625302405</updated>
       <workItem from="1747625303418" duration="36271000" />
-      <workItem from="1747750226434" duration="8721000" />
+      <workItem from="1747750226434" duration="9353000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -275,7 +261,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747755959456</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="commit">
+      <option name="closed" value="true" />
+      <created>1747762048502</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1747762048502</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

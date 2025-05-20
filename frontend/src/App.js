@@ -18,8 +18,19 @@ import Dashboard from './pages/Dashboard';
 import {AppBar, Box, Button, Toolbar, Typography} from "@mui/material";
 import './App.css';
 
-
 function App() {
+    // Массив объектов для навигации
+    const navItems = [
+        {name: 'Главная', path: '/', listComponent: Dashboard},
+        {name: 'Клиенты', path: '/clients', listComponent: ClientList, formComponent: ClientForm},
+        {name: 'Сотрудники', path: '/employees', listComponent: EmployeeList, formComponent: EmployeeForm},
+        {name: 'Услуги', path: '/services', listComponent: ServiceList, formComponent: ServiceForm},
+        {name: 'Проекты', path: '/projects', listComponent: ProjectList, formComponent: ProjectForm},
+        {name: 'Кампании', path: '/campaigns', listComponent: CampaignList, formComponent: CampaignForm},
+        {name: 'Заявки', path: '/requests', listComponent: RequestList, formComponent: RequestForm},
+        {name: 'Отчёты', path: '/reports', listComponent: ReportList, formComponent: ReportForm},
+    ];
+
     return (
         <Router>
             <div className="App">
@@ -29,43 +40,19 @@ function App() {
                             Маркетинговое агентство
                         </Typography>
                         <Box>
-                            <Button color="inherit" component={Link} to="/"
-                                    sx={{color: '#fff', '&:hover': {backgroundColor: '#555'}}}>
-                                Главная
-                            </Button>
-                            <Button color="inherit" component={Link} to="/clients"
-                                    sx={{color: '#fff', '&:hover': {backgroundColor: '#555'}}}>
-                                Клиенты
-                            </Button>
-                            <Button color="inherit" component={Link} to="/employees"
-                                    sx={{color: '#fff', '&:hover': {backgroundColor: '#555'}}}>
-                                Сотрудники
-                            </Button>
-                            <Button color="inherit" component={Link} to="/services"
-                                    sx={{color: '#fff', '&:hover': {backgroundColor: '#555'}}}>
-                                Услуги
-                            </Button>
-                            <Button color="inherit" component={Link} to="/projects"
-                                    sx={{color: '#fff', '&:hover': {backgroundColor: '#555'}}}>
-                                Проекты
-                            </Button>
-                            <Button color="inherit" component={Link} to="/campaigns"
-                                    sx={{color: '#fff', '&:hover': {backgroundColor: '#555'}}}>
-                                Кампании
-                            </Button>
-                            <Button color="inherit" component={Link} to="/requests"
-                                    sx={{color: '#fff', '&:hover': {backgroundColor: '#555'}}}>
-                                Заявки
-                            </Button>
-                            <Button color="inherit" component={Link} to="/reports"
-                                    sx={{color: '#fff', '&:hover': {backgroundColor: '#555'}}}>
-                                Отчёты
-                            </Button>
-                            <Button
-                                color="inherit"
-                                href="/accounts/logout/"
-                                sx={{color: '#ff2e2e', '&:hover': {backgroundColor: '#555'}}}
-                            >
+                            {navItems.map((item) => (
+                                <Button
+                                    key={item.name}
+                                    color="inherit"
+                                    component={Link}
+                                    to={item.path}
+                                    sx={{color: '#fff', '&:hover': {backgroundColor: '#555'}}}
+                                >
+                                    {item.name}
+                                </Button>
+                            ))}
+                            <Button color="inherit" href="/accounts/logout/"
+                                    sx={{color: '#ff2e2e', '&:hover': {backgroundColor: '#555'}}}>
                                 Выход
                             </Button>
                         </Box>
@@ -73,28 +60,17 @@ function App() {
                 </AppBar>
                 <Box sx={{mt: 2}}>
                     <Routes>
-                        <Route path="/" element={<Dashboard/>}/>
-                        <Route path="/clients" element={<ClientList/>}/>
-                        <Route path="/clients/add" element={<ClientForm/>}/>
-                        <Route path="/clients/edit/:id" element={<ClientForm/>}/>
-                        <Route path="/employees" element={<EmployeeList/>}/>
-                        <Route path="/employees/add" element={<EmployeeForm/>}/>
-                        <Route path="/employees/edit/:id" element={<EmployeeForm/>}/>
-                        <Route path="/services" element={<ServiceList/>}/>
-                        <Route path="/services/add" element={<ServiceForm/>}/>
-                        <Route path="/services/edit/:id" element={<ServiceForm/>}/>
-                        <Route path="/projects" element={<ProjectList/>}/>
-                        <Route path="/projects/add" element={<ProjectForm/>}/>
-                        <Route path="/projects/edit/:id" element={<ProjectForm/>}/>
-                        <Route path="/campaigns" element={<CampaignList/>}/>
-                        <Route path="/campaigns/add" element={<CampaignForm/>}/>
-                        <Route path="/campaigns/edit/:id" element={<CampaignForm/>}/>
-                        <Route path="/requests" element={<RequestList/>}/>
-                        <Route path="/requests/add" element={<RequestForm/>}/>
-                        <Route path="/requests/edit/:id" element={<RequestForm/>}/>
-                        <Route path="/reports" element={<ReportList/>}/>
-                        <Route path="/reports/add" element={<ReportForm/>}/>
-                        <Route path="/reports/edit/:id" element={<ReportForm/>}/>
+                        {navItems.map((item) => (
+                            <React.Fragment key={item.name}>
+                                <Route path={item.path} element={<item.listComponent/>}/>
+                                {item.formComponent && (
+                                    <>
+                                        <Route path={`${item.path}/add`} element={<item.formComponent/>}/>
+                                        <Route path={`${item.path}/edit/:id`} element={<item.formComponent/>}/>
+                                    </>
+                                )}
+                            </React.Fragment>
+                        ))}
                     </Routes>
                 </Box>
             </div>
