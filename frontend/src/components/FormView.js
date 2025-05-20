@@ -44,7 +44,7 @@ const FormView = ({endpoint, fields}) => {
         <Box sx={{display: 'flex', justifyContent: 'center', p: 3}}>
             <Paper elevation={3} sx={{p: 4, maxWidth: '90%', width: 600, borderRadius: 2}}>
                 <Typography variant="h5" gutterBottom sx={{color: '#333', fontWeight: 500}}>
-                    {id ? 'Редактировать клиента' : 'Добавить клиента'}
+                    {id ? 'Редактировать запись' : 'Добавить запись'}
                 </Typography>
                 <form onSubmit={handleSubmit}>
                     {fields.map((field) => (
