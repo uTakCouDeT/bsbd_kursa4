@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import TableView from '../components/TableView';
-import axios from '../axios';
+import TableView from '../../components/TableView';
+import axios from '../../axios';
 
 const ClientList = () => {
     const [clients, setClients] = useState([]);
@@ -18,14 +18,12 @@ const ClientList = () => {
     }, []);
 
     const handleDelete = async (id) => {
-        // if (window.confirm('Вы уверены, что хотите удалить клиента?')) {
         try {
             await axios.delete(`/api/clients/${id}/`);
             setClients(clients.filter(client => client.id !== id));
         } catch (error) {
             console.error('Ошибка при удалении клиента:', error);
         }
-        // }
     };
 
     const columns = [

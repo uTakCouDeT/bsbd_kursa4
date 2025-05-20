@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import TableView from '../components/TableView';
-import axios from '../axios';
+import TableView from '../../components/TableView';
+import axios from '../../axios';
 
 const ProjectList = () => {
     const [projects, setProjects] = useState([]);
@@ -29,8 +29,8 @@ const ProjectList = () => {
     const columns = [
         {field: 'id', headerName: 'ID', flex: 0.5},
         {field: 'name', headerName: 'Название', flex: 1},
-        {field: 'deadline', headerName: 'Срок выполнения', flex: 1},
-        {field: 'employee', headerName: 'Сотрудник', flex: 1, valueGetter: (params) => params.row.employee?.name},
+        {field: 'deadline', headerName: 'Срок выполнения', flex: 1, type: 'datetime'},
+        {field: 'employee', headerName: 'Сотрудник', flex: 1, type: 'foreignKey'},
         {field: 'budget', headerName: 'Бюджет', flex: 1},
     ];
 

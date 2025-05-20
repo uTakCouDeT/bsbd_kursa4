@@ -5,7 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27fbeef2-c774-4da9-a552-aca73b7204e1" name="Changes" comment="commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/FormView.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/FormView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/TableView.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TableView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/CampaignForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/CampaignForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/CampaignList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/CampaignList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ClientForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ClientForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ClientList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ClientList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/EmployeeForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/EmployeeForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ProjectForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ProjectForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ProjectList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ProjectList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ReportForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ReportForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ReportList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ReportList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/RequestForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/RequestForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/RequestList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/RequestList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ServiceForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ServiceForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,11 +90,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\user\PycharmProjects\bsbd_kursa4\frontend\src\pages\Lists" />
+      <recent name="C:\Users\user\PycharmProjects\bsbd_kursa4\frontend\src\pages" />
       <recent name="C:\Users\user\PycharmProjects\bsbd_kursa4\frontend\src\pages\Forms" />
+      <recent name="C:\Users\user\PycharmProjects\bsbd_kursa4\frontend\src\pages\Lists" />
       <recent name="C:\Users\user\PycharmProjects\bsbd_kursa4\backend\static\css" />
       <recent name="C:\Users\user\PycharmProjects\bsbd_kursa4\templates\registration" />
-      <recent name="C:\Users\user\PycharmProjects\bsbd_kursa4\templates" />
     </key>
   </component>
   <component name="RunManager" selected="npm.build">
@@ -147,7 +163,7 @@
       <option name="presentableId" value="Default" />
       <updated>1747625302405</updated>
       <workItem from="1747625303418" duration="36271000" />
-      <workItem from="1747750226434" duration="9353000" />
+      <workItem from="1747750226434" duration="20216000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -269,7 +285,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747762048502</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="commit">
+      <option name="closed" value="true" />
+      <created>1747762465594</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1747762465594</updated>
+    </task>
+    <task id="LOCAL-00017" summary="commit">
+      <option name="closed" value="true" />
+      <created>1747762537092</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1747762537092</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

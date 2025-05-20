@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import TableView from '../components/TableView';
-import axios from '../axios';
+import TableView from '../../components/TableView';
+import axios from '../../axios';
 
 const CampaignList = () => {
     const [campaigns, setCampaigns] = useState([]);
@@ -30,7 +30,7 @@ const CampaignList = () => {
         {field: 'id', headerName: 'ID', flex: 0.5},
         {field: 'name', headerName: 'Название', flex: 1},
         {field: 'goal', headerName: 'Цель', flex: 1.5},
-        {field: 'deadline', headerName: 'Срок выполнения', flex: 1},
+        {field: 'deadline', headerName: 'Срок выполнения', flex: 1, type: 'datetime'},
         {field: 'budget', headerName: 'Бюджет', flex: 1},
     ];
 

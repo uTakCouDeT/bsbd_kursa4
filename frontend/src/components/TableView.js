@@ -5,6 +5,40 @@ import {IconButton, Box, Typography, Button} from '@mui/material';
 import {Edit, Delete, Add} from '@mui/icons-material';
 
 const TableView = ({endpoint, columns, title, editPath, addPath, onDelete, data}) => {
+    // Форматирование даты в читаемый вид
+    const formatDate = (dateString) => {
+        if (!dateString) return '';
+        const date = new Date(dateString);
+        return date.toLocaleString('ru-RU', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+        });
+    };
+
+    // Преобразование столбцов для корректного отображения ForeignKey и дат
+    const processedColumns = columns.map((col) => {
+        if (col.type === 'foreignKey') {
+            return {
+                ...col,
+                valueGetter: (value) => {
+                    return value?.name || value?.id || '-';
+                }
+            };
+        }
+        if (col.type === 'datetime') {
+            return {
+                ...col,
+                valueGetter: (value) => {
+                    return value ? formatDate(value) : '-';
+                }
+            };
+        }
+        return col;
+    });
+
     const actionColumn = {
         field: 'actions',
         headerName: 'Действия',
@@ -21,7 +55,7 @@ const TableView = ({endpoint, columns, title, editPath, addPath, onDelete, data}
         ),
     };
 
-    const allColumns = [...columns, actionColumn];
+    const allColumns = [...processedColumns, actionColumn];
 
     return (
         <Box sx={{p: 3}}>

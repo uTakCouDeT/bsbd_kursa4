@@ -1,5 +1,5 @@
 import React from 'react';
-import FormView from '../components/FormView';
+import FormView from '../../components/FormView';
 
 const fields = [
     {name: 'name', label: 'Имя', type: 'text', required: true},
@@ -8,7 +8,7 @@ const fields = [
 ];
 
 const EmployeeForm = () => {
-    return <FormView endpoint="/api/employees/" fields={fields} title="Запись сотрудника"/>;
+    return <FormView endpoint="/api/employees/" fields={fields}/>;
 };
 
 export default EmployeeForm;

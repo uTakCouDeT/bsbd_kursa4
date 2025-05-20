@@ -1,5 +1,5 @@
 import React from 'react';
-import FormView from '../components/FormView';
+import FormView from '../../components/FormView';
 
 const fields = [
     {name: 'name', label: 'Название', type: 'text', required: true},
@@ -9,7 +9,7 @@ const fields = [
 ];
 
 const CampaignForm = () => {
-    return <FormView endpoint="/api/campaigns/" fields={fields} title="Запись кампании"/>;
+    return <FormView endpoint="/api/campaigns/" fields={fields}/>;
 };
 
 export default CampaignForm;

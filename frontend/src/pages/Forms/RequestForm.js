@@ -1,5 +1,5 @@
 import React from 'react';
-import FormView from '../components/FormView';
+import FormView from '../../components/FormView';
 
 const fields = [
     {name: 'client', label: 'Клиент', type: 'select', source: '/api/clients/', required: true},
@@ -9,7 +9,7 @@ const fields = [
 ];
 
 const RequestForm = () => {
-    return <FormView endpoint="/api/requests/" fields={fields} title="Запись заявки"/>;
+    return <FormView endpoint="/api/requests/" fields={fields}/>;
 };
 
 export default RequestForm;

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import TableView from '../components/TableView';
-import axios from '../axios';
+import TableView from '../../components/TableView';
+import axios from '../../axios';
 
 const ServiceList = () => {
     const [services, setServices] = useState([]);
