@@ -9,20 +9,51 @@ const FormView = ({endpoint, fields}) => {
     const navigate = useNavigate();
     const {id} = useParams();
 
+    // Форматирование даты для datetime-local
+    const formatDateForInput = (dateString) => {
+        if (!dateString) return '';
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        return `${year}-${month}-${day}T${hours}:${minutes}`;
+    };
+
     // Загрузка данных для редактирования
     useEffect(() => {
         const fetchData = async () => {
             if (id) {
                 try {
                     const response = await axios.get(`${endpoint}${id}/`);
-                    setFormData(response.data);
+                    const data = response.data;
+
+                    // Преобразование данных для полей
+                    const transformedData = {};
+                    fields.forEach((field) => {
+                        if (field.type === 'select' && data[field.name]) {
+                            // Для ForeignKey берём только ID и добавляем поле с суффиксом _id
+                            const foreignKeyId = data[field.name]?.id || data[`${field.name}_id`] || '';
+                            transformedData[field.name] = foreignKeyId;
+                            transformedData[`${field.name}_id`] = foreignKeyId;
+                        } else if (field.type === 'datetime-local' && data[field.name]) {
+                            // Для datetime-local преобразуем ISO-строку
+                            transformedData[field.name] = formatDateForInput(data[field.name]);
+                        } else {
+                            // Для остальных полей берём значение как есть
+                            transformedData[field.name] = data[field.name] || '';
+                        }
+                    });
+
+                    setFormData(transformedData);
                 } catch (error) {
                     console.error('Ошибка при загрузке данных:', error);
                 }
             }
         };
         fetchData();
-    }, [id, endpoint]);
+    }, [id, endpoint, fields]);
 
     // Загрузка данных для полей типа Select (ForeignKey)
     useEffect(() => {
@@ -56,10 +87,19 @@ const FormView = ({endpoint, fields}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            // Создаём копию formData для отправки, чтобы удалить лишние поля
+            const dataToSubmit = {...formData};
+            fields.forEach((field) => {
+                if (field.type === 'select') {
+                    // Удаляем поле без суффикса _id, оставляем только _id
+                    delete dataToSubmit[field.name];
+                }
+            });
+
             if (id) {
-                await axios.put(`${endpoint}${id}/`, formData);
+                await axios.put(`${endpoint}${id}/`, dataToSubmit);
             } else {
-                await axios.post(endpoint, formData);
+                await axios.post(endpoint, dataToSubmit);
             }
             navigate(-1);
         } catch (error) {
@@ -106,6 +146,7 @@ const FormView = ({endpoint, fields}) => {
                                     multiline={field.type === 'textarea'}
                                     rows={field.type === 'textarea' ? 4 : undefined}
                                     placeholder={field.type === 'datetime-local' ? 'Выберите дату и время' : undefined}
+                                    InputLabelProps={field.type === 'datetime-local' ? {shrink: true} : undefined}
                                     sx={{
                                         '& .MuiInputLabel-root': {
                                             color: '#666',
