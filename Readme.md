@@ -45,9 +45,3 @@
 - **Python** - v3.14
 - **Node.js** - v22.15.1
 - **npm** - v10.9.0
-
-## Ссылки на загрузку
-
-- [Python](https://www.python.org/downloads/) - для установки python.
-- [SAS Planet](https://www.sasgis.org/sasplaneta/) - для скачивания и работы с тайлами карт.
-- [Node.js](https://nodejs.org/) - для установки и работы с npm.
