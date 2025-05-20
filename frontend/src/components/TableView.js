@@ -5,17 +5,16 @@ import {IconButton, Box, Typography, Button} from '@mui/material';
 import {Edit, Delete, Add} from '@mui/icons-material';
 
 const TableView = ({endpoint, columns, title, editPath, addPath, onDelete, data}) => {
-    // Форматирование даты в читаемый вид
+    // Форматирование даты в читаемый вид (используем UTC-методы)
     const formatDate = (dateString) => {
-        if (!dateString) return '';
+        if (!dateString) return '-';
         const date = new Date(dateString);
-        return date.toLocaleString('ru-RU', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-        });
+        const year = date.getUTCFullYear();
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+        const day = String(date.getUTCDate()).padStart(2, '0');
+        const hours = String(date.getUTCHours()).padStart(2, '0');
+        const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+        return `${day}.${month}.${year} ${hours}:${minutes}`;
     };
 
     // Преобразование столбцов для корректного отображения ForeignKey и дат
@@ -23,17 +22,13 @@ const TableView = ({endpoint, columns, title, editPath, addPath, onDelete, data}
         if (col.type === 'foreignKey') {
             return {
                 ...col,
-                valueGetter: (value) => {
-                    return value?.name || value?.id || '-';
-                }
+                valueGetter: (value) => value?.name || value?.id || '-',
             };
         }
         if (col.type === 'datetime') {
             return {
                 ...col,
-                valueGetter: (value) => {
-                    return value ? formatDate(value) : '-';
-                }
+                valueGetter: (value) => (value ? formatDate(value) : '-'),
             };
         }
         return col;

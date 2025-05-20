@@ -9,16 +9,29 @@ const FormView = ({endpoint, fields}) => {
     const navigate = useNavigate();
     const {id} = useParams();
 
-    // Форматирование даты для datetime-local
+    // Форматирование даты из UTC в локальный формат для datetime-local
     const formatDateForInput = (dateString) => {
         if (!dateString) return '';
         const date = new Date(dateString);
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        const hours = String(date.getHours()).padStart(2, '0');
-        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const year = date.getUTCFullYear();
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+        const day = String(date.getUTCDate()).padStart(2, '0');
+        const hours = String(date.getUTCHours()).padStart(2, '0');
+        const minutes = String(date.getUTCMinutes()).padStart(2, '0');
         return `${year}-${month}-${day}T${hours}:${minutes}`;
+    };
+
+    // Преобразование даты из локального формата в UTC для отправки на сервер
+    const formatDateForServer = (dateString) => {
+        if (!dateString) return null;
+        // Разбираем строку в формате YYYY-MM-DDThh:mm
+        const [datePart, timePart] = dateString.split('T');
+        const [year, month, day] = datePart.split('-').map(Number);
+        const [hours, minutes] = timePart.split(':').map(Number);
+
+        // Создаём дату в UTC, используя значения как есть (без смещения часового пояса)
+        const date = new Date(Date.UTC(year, month - 1, day, hours, minutes));
+        return date.toISOString();
     };
 
     // Загрузка данных для редактирования
@@ -87,12 +100,15 @@ const FormView = ({endpoint, fields}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Создаём копию formData для отправки, чтобы удалить лишние поля
+            // Создаём копию formData для отправки
             const dataToSubmit = {...formData};
             fields.forEach((field) => {
                 if (field.type === 'select') {
                     // Удаляем поле без суффикса _id, оставляем только _id
                     delete dataToSubmit[field.name];
+                } else if (field.type === 'datetime-local' && dataToSubmit[field.name]) {
+                    // Преобразуем дату в UTC перед отправкой
+                    dataToSubmit[field.name] = formatDateForServer(dataToSubmit[field.name]);
                 }
             });
 
